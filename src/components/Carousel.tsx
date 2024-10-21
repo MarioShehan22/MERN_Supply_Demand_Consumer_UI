@@ -60,10 +60,10 @@ const CarouselSlider = () => {
                          alt="profile-sample3" className="profile"/>
                     <figcaption>
                         <h1 className="text-white text-2xl font-bold">Oliva Perera</h1>
-                        <h2 className="text-white text-xl font-bold">UX Design</h2>
+                        <h2 className="text-white text-xl font-bold">Head Chef</h2>
                         <h2 className="text-white text-xl font-bold">Blue Ocean Hotel</h2>
                         <blockquote>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ullamcorper scelerisque mi, in malesuada felis malesuada vel.
+                            "Marcus Fish Supply is a great place to find fresh seafood at reasonable prices. I've compared their prices to other local fish markets, and they consistently offer competitive deals. The quality of the fish is excellent, and I've never had any issues with spoilage. I highly recommend this place to anyone looking for a good value on seafood."
                         </blockquote>
                     </figcaption>
                 </figure>
@@ -75,7 +75,7 @@ const CarouselSlider = () => {
                         <h2 className="text-white text-xl font-bold">Head Chef</h2>
                         <h2 className="text-white text-xl font-bold">Jetwings LunuMirisa</h2>
                         <blockquote>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ullamcorper scelerisque mi, in malesuada felis malesuada vel.
+                            "I appreciate that Marcus Fish Supply is committed to sustainable seafood practices. They source their fish from responsible suppliers and are transparent about their sourcing methods. This is important to me as a consumer, and it gives me peace of mind knowing that I'm supporting a business that cares about the environment."
                         </blockquote>
                     </figcaption>
                 </figure>
@@ -88,7 +88,7 @@ const CarouselSlider = () => {
                         <h2 className="text-white text-xl font-bold">Head Chef</h2>
                         <h2 className="text-white text-xl font-bold">Jetwings Restaurant</h2>
                         <blockquote>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ullamcorper scelerisque mi, in malesuada felis malesuada vel.
+                            "I've been a loyal customer of Marcus Fish Supply for years, and I've never been disappointed. Their seafood is consistently fresh and high-quality. The variety they offer is impressive, from classic favorites like salmon and shrimp to more exotic options. The staff is always friendly and helpful, and they go out of their way to ensure customer satisfaction."
                         </blockquote>
                     </figcaption>
                 </figure>
@@ -100,7 +100,7 @@ const CarouselSlider = () => {
                         <h2 className="text-white text-xl font-bold">Head Chef</h2>
                         <h2 className="text-white text-xl font-bold">Hotel LunuMirisa</h2>
                         <blockquote>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ullamcorper scelerisque mi, in malesuada felis malesuada vel.
+                            "As someone who is new to cooking with seafood, I found Marcus Fish Supply to be incredibly helpful. The staff was patient and knowledgeable, and they were able to recommend some great recipes for beginners. I've had a lot of success with their products, and I've learned a lot about how to cook and prepare different types of fish."
                         </blockquote>
                     </figcaption>
                 </figure>

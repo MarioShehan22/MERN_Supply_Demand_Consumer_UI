@@ -14,11 +14,12 @@ export const useGetProduct = () => {
         }
     };
 
-    const { data, error } = useQuery<Product[]>({
+    const { data, error,refetch } = useQuery<Product[]>({
         queryKey: ["fetchAllProduct"],
         queryFn: getAllProduct,
-        initialData: []
+        initialData: [],
+        refetchInterval: 5000
     });
 
-    return { data, error };
+    return { data, error,refetch };
 };

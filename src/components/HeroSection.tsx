@@ -10,7 +10,7 @@ const HeroSection = () => {
                       IF You Want To The Best
                   </div>
                   <p className="xl:mt-4 md:mt-2 text-gray-500 xl:text-base md:text-sm leading-relaxed">
-                      cOffering a variety of fresh, never frozen fish fillets, shellfish, and crustaceans,
+                      Offering a variety of fresh, never frozen fish fillets, shellfish, and crustaceans,
                       Marcus Fish helps create restaurant-quality dishes at home or provides chefs with top-notch ingredients.
                   </p>
                   <div className="xl:mt-8 md:mt-3 flex justify-center border-current">

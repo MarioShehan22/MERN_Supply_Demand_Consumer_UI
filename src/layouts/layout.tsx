@@ -9,7 +9,9 @@ const Layout = ({children}) => {
           <div className="mx-auto xl:max-w-screen-xl md:max-w-screen-md">
               {children}
           </div>
-          <FooterSection/>
+          <div className='w-full fixed bottom-0'>
+              <FooterSection/>
+          </div>
       </>
   );
 }
