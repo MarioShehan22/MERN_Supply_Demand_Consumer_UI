@@ -4,6 +4,9 @@ import AxiosInstance from "../config/AxiosInstance";
 import {useStore} from "../store/store";
 import Image from "../assets/sea.png";
 import Logo from "../assets/RealLogo.png";
+import {Toaster} from "@/components/ui/toaster";
+import {toast} from "@/hooks/use-toast";
+import {ToastAction} from "@/components/ui/toast";
 
 const Login:React.FC  = () => {
     const [email, setEmail]=useState('');
@@ -26,11 +29,20 @@ const Login:React.FC  = () => {
 
                 setEmail('');
                 setPassword('');
+
+                toast({
+                    description: `Hello ${email}`,
+                })
                 navigate('/');
             }
-
         }catch (e){
             setErrorMessage('Incorrect email or password. Please try again.');
+            toast({
+                variant: "destructive",
+                title: "Uh oh! Something went wrong.",
+                description: "Incorrect email or password. Please try again.",
+                action: <ToastAction altText="Try again">Try again</ToastAction>,
+            });
         }
     }
 
@@ -45,7 +57,8 @@ const Login:React.FC  = () => {
                 }}
             >
                 <form className="mx-auto w-1/4 absolute z-10">
-                    <div className="mb-5">
+                    <Toaster />
+                    <div className="mb-3">
                         <div className="flex justify-center items-center w-full h-2/5">
                             <img src={`${Logo}`} alt="Logo" className='size-2/4'/>
                         </div>
@@ -67,7 +80,7 @@ const Login:React.FC  = () => {
                         />
                     </div>
                     <div
-                        className="mb-5">
+                        className="mb-3">
                         <label
                             htmlFor="password"
                             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -83,7 +96,7 @@ const Login:React.FC  = () => {
                         />
                     </div>
                     <div
-                        className="flex items-start mb-5">
+                        className="flex items-start mb-3">
                         <div
                             className="flex items-center h-5">
                             <input
@@ -100,6 +113,15 @@ const Login:React.FC  = () => {
                             Remember me
                         </label>
                     </div>
+                    <div className="flex items-start mb-3">
+                        <Link
+                            type="submit"
+                            className="mb-2 text-blue-500 hover:text-blue-800 hover:underline font-medium text-sm w-full"
+                            to="/forget-password"
+                        >
+                            Forget Password
+                        </Link>
+                    </div>
                     <div className="flex flex-col">
                         {errorMessage && <div className="text-red-500 my-2">{errorMessage}</div>}
                         <button
@@ -112,7 +134,7 @@ const Login:React.FC  = () => {
                         <Link
                             to="/signup"
                             type="submit"
-                            className="mt-5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+                            className="mt-3 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
                         >
                             SignUp
                         </Link>

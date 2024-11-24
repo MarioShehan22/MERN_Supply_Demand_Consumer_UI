@@ -1,8 +1,10 @@
 import React, {useState} from "react";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import AxiosInstance from "../config/AxiosInstance";
 import Image from "../assets/sea.png";
 import Logo from "../assets/RealLogo.png";
+import {toast} from "@/hooks/use-toast";
+import {ToastAction} from "@/components/ui/toast";
 
 export type UserForm = {
     fistName:string|'';
@@ -38,7 +40,7 @@ const SignUp:React.FC  = () => {
         password:'',
         activeState: true
     });
-
+    const navigate = useNavigate();
     const handleInputChange = (e) => {
         const name = e.target.name;
         const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
@@ -62,10 +64,19 @@ const SignUp:React.FC  = () => {
                     password:'',
                     activeState: true
                 });
+                toast({
+                    description: `Congratulation successful Create Account!`,
+                });
+                navigate('/login');
             }
         }catch (e){
-            console.log('Incorrect email or password. Please try again.');
-            setErrorMessage('Incorrect email or password. Please try again.');
+            setErrorMessage('All Details of Form not Complete! Please try again.');
+            toast({
+                variant: "destructive",
+                title: "Uh oh! Something went wrong.",
+                description: "Incorrect email or password. Please try again.",
+                action: <ToastAction altText="Try again">Try again</ToastAction>,
+            });
         }
     }
 
@@ -206,7 +217,7 @@ const SignUp:React.FC  = () => {
                         <label htmlFor="remember" className="ms-2 text-lg font-medium text-gray-900 dark:text-gray-300">I agree with the <a href="#" className="text-blue-600 hover:underline">terms and conditions</a>.</label>
                     </div>
                     <div className="w-1/3 flex flex-col mx-auto">
-                        {errorMessage && <div className="text-red-500 my-2">{errorMessage}</div>}
+                        {errorMessage && <div className="text-lg text-red-500 my-2">{errorMessage}</div>}
                         <button
                             type="submit"
                             onClick={register}

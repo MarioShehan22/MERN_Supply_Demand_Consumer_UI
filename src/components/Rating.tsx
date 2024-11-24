@@ -2,6 +2,7 @@ import { FaStar } from "react-icons/fa";
 import {useState} from "react";
 import AxiosInstance from "../config/AxiosInstance";
 import {useGetRatings} from "../api/RatingsService";
+import {toast} from "../hooks/use-toast";
 
 const Rating = ({readOnly = false }) => {
     const[hover, setHover] = useState(0);
@@ -18,6 +19,9 @@ const Rating = ({readOnly = false }) => {
         const response =await AxiosInstance.post("/reviews/create",data);
         if(response.status==201){
             refetch;
+            toast({
+                description: `successful Create the review!`,
+            });
             setData({email: '', comment: '', currentRating:0});
         }
     }

@@ -2,11 +2,13 @@ import UserDetailsForm from "../components/UserDetailsForm";
 import React, {useEffect} from "react";
 import {Trash2} from "lucide-react";
 import ChangeQtyButtons from "../components/ChangeQtyButtons";
-import {useStore} from "../store/store";
+import {useStore} from "@/store/store";
 import {useShallow} from "zustand/react/shallow";
-import axios from "axios";
-import {useGetSelectedUsers} from "../api/UserService";
-import {useGetSelectedAddress} from "../api/AddresServce";
+import {useGetSelectedUsers} from "@/api/UserService";
+import {useGetSelectedAddress} from "@/api/AddresServce";
+import {toast} from "@/hooks/use-toast";
+import AxiosInstance from "@/config/AxiosInstance";
+import {ToastAction} from "@/components/ui/toast";
 
 const PlaceOrderPage = () => {
     const { reset, products, removeProduct, total } = useStore(
@@ -93,13 +95,25 @@ const PlaceOrderPage = () => {
                   <p className="my-3 text-2xl font-bold">Total: {total}$</p>
                   <button
                       onClick={
-                          ()=>{axios.post(
+                          ()=>{AxiosInstance.post(
                               'http://localhost:3000/api/v1/orders/create',{
                                   cartItem:products,
                                   customerDetail:user._id,
                                   totalPrice:total,
                                   activeState: true
-                              }).then(reset);}
+                              }).then(reset).then(r=>{
+                              toast({
+                                  description: `successful Place the order!`,
+                              });
+                          }).catch(e=>{
+                              toast({
+                                  variant: "destructive",
+                                  title: "Uh oh! Something went wrong.",
+                                  description: "Incorrect email or password. Please try again.",
+                                  action: <ToastAction altText="Try again">Try again</ToastAction>,
+                              })
+                          });
+                          }
                       }
                       className="rounded-lg bg-blue-700 px-4 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                   >
@@ -111,3 +125,4 @@ const PlaceOrderPage = () => {
   );
 }
 export default PlaceOrderPage;
+

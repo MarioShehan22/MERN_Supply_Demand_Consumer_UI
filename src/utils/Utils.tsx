@@ -10,6 +10,7 @@ export type Product = {
     showPrice:number|null;
     imageUrl:string|'';
     description:string|'';
+    "activeState": boolean|undefined,
 }
 export type Ratings = {
     email: string | '',

@@ -21,8 +21,7 @@ const ProductPage:React.FC  = () => {
             <NavigationBar/>
             <div className="mx-auto mt-2 xl:max-w-screen-xl md:max-w-screen-md">
                 <form className="w-1/2">
-                    <label htmlFor="default-search mr-2"
-                           className="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
+                    <label htmlFor="default-search mr-2" className="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
                     <div className="relative">
                         <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                             <svg className="w-4 h-4 text-gray-500" aria-hidden="true"
@@ -33,16 +32,17 @@ const ProductPage:React.FC  = () => {
                         </div>
                         <input type="search"
                                id="default-search"
-                               className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
+                               className="block w-full py-4 ps-12 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
                                placeholder="Search..."
                                required/>
                         <button type="submit"
-                                className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 ">Search
+                                className="text-white absolute end-2.5 bottom-4 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 ">Search
                         </button>
                     </div>
                 </form>
                 <div className="mt-12 grid grid-cols-3 gap-3">
                     {data.map((product) => (
+                        product.activeState&&
                         <div key={product._id} className="w-full max-w-sm bg-white rounded-lg shadow group border border-slate-300">
                             <div className="overflow-hidden">
                                 <img className="p-8 rounded-t-lg transition duration-150 group-hover:scale-110" src={`../src/assets/Product_Image/${product.imageUrl}`} alt="product image"/>
@@ -67,7 +67,9 @@ const ProductPage:React.FC  = () => {
                                                 ["name"]:product.ProductName,
                                                 ["showPrice"]: product.showPrice,
                                                 ["imageUrl"]:"",
-                                                ["description"]:"" });
+                                                ["description"]:"" ,
+                                                ['activeState']:true
+                                            },);
                                         }}
                                                 variant="default"
                                                 className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">

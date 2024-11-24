@@ -1,7 +1,7 @@
 const FooterSection = () => {
     return(
         <>
-            <footer className="bg-[#2D83A6] text-white dark:bg-gray-900 mt-12">
+            <footer className="bg-[#2D83A6] text-white mt-12">
                 <div className="mx-auto w-full xl:max-w-screen-xl md:max-w-screen-md p-4 py-6 lg:py-8">
                     <div className="md:flex md:justify-between">
                         <div className="mb-6 md:mb-0">
@@ -52,13 +52,13 @@ const FooterSection = () => {
                             </div>
                         </div>
                     </div>
-                    <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8"/>
+                    <hr className="my-6 border-gray-200 sm:mx-auto lg:my-8"/>
                     <div className="sm:flex sm:items-center sm:justify-between">
                              <span className="text-sm text-white sm:text-center">© 2024
                                  <i className="hover:text-[#000000]"> Marcus Fish™</i>. All Rights Reserved.
                              </span>
                         <div className="flex mt-4 sm:justify-center sm:mt-0">
-                            <a href="#" className="text-white hover:text-gray-900 dark:hover:text-white">
+                            <a href="#" className="text-white hover:text-gray-900">
                                 <svg className="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                      fill="currentColor" viewBox="0 0 8 19">
                                     <path fillRule="evenodd"

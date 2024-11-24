@@ -1,0 +1,124 @@
+import React, {useState} from "react";
+import {Link, useNavigate} from "react-router-dom";
+import Image from "@/assets/sea.png";
+import {Toaster} from "@/components/ui/toaster";
+import Logo from "@/assets/RealLogo.png";
+import AxiosInstance from "@/config/AxiosInstance";
+import {toast} from "@/hooks/use-toast";
+import {ToastAction} from "@/components/ui/toast";
+
+const ResetPassword = () => {
+    const [email, setEmail]=useState('');
+    const [newPassword, setNewPassword]=useState('');
+
+    const [errorMessage, setErrorMessage] = useState('');
+    const navigate = useNavigate();
+
+    const forgetPassword = async (e)=>{
+        e.preventDefault();
+        try{
+            await AxiosInstance.post('/users/forget-password',{
+                email,newPassword
+            });
+            console.log(email);
+            console.log(newPassword);
+            setEmail('');
+            setNewPassword('');
+
+            toast({
+                description: `Hello ${email} You Successfully Reset Password`,
+            })
+            navigate('/login');
+        }catch (e){
+            setErrorMessage('Incorrect email or password. Please try again.');
+            toast({
+                variant: "destructive",
+                title: "Uh oh! Something went wrong.",
+                description: "Incorrect email or password. Please try again.",
+                action: <ToastAction altText="Try again">Try again</ToastAction>,
+            });
+        }
+    }
+  return(
+      <>
+          <div className="h-screen flex items-center relative justify-center"
+               style={{
+                   backgroundImage: `url(${Image})`,
+                   backgroundRepeat: 'no-repeat',
+                   backgroundSize: 'cover',
+                   opacity:'70%',
+               }}
+          >
+              <form className="mx-auto w-1/4 absolute z-10">
+                  <Toaster />
+                  <div className="mb-5">
+                      <div className="flex justify-center items-center w-full h-2/5">
+                          <img src={`${Logo}`} alt="Logo" className='size-2/4'/>
+                      </div>
+                      <div className="text-5xl font-semibold leading-normal text-center">
+                          Reset Password
+                      </div>
+                      <label
+                          htmlFor="email"
+                          className="block mb-2 text-sm font-medium text-gray-900">
+                          Your Registered email
+                      </label>
+                      <input
+                          type="text"
+                          name="email"
+                          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                          placeholder="name@gmail.com"
+                          required
+                          onChange={(e)=>{setEmail(e.target.value)}}
+                      />
+                  </div>
+                  <div
+                      className="mb-5">
+                      <label
+                          htmlFor="password"
+                          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                      >
+                          Your password
+                      </label>
+                      <input
+                          type="password"
+                          name="password"
+                          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                          placeholder="**************"
+                          required
+                          onChange={(e)=>{setNewPassword(e.target.value)}}
+                      />
+                  </div>
+                  <div
+                      className="flex items-start mb-5">
+                      <div
+                          className="flex items-center h-5">
+                          <input
+                              id="remember"
+                              type="checkbox"
+                              value=""
+                              className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300"
+                              required
+                          />
+                      </div>
+                      <label
+                          htmlFor="remember"
+                          className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                          Remember me
+                      </label>
+                  </div>
+                  <div className="flex flex-col">
+                      {errorMessage && <div className="text-red-500 my-2">{errorMessage}</div>}
+                      <button
+                          onClick={forgetPassword}
+                          className="mt-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+                      >
+                          Forget Password
+                      </button>
+                  </div>
+              </form>
+          </div>
+      </>
+  );
+}
+export default ResetPassword;

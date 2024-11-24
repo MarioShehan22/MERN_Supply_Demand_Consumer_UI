@@ -9,6 +9,8 @@ import RatingsPage from "./pages/RatingsPage";
 import Layout from "./layouts/layout";
 import OrderDetails from "./pages/OrderDetails";
 import AboutUsPage from "./pages/AboutUsPage";
+import ErrorPage from "./pages/ErrorPage";
+import ResetPassword from "@/pages/ResetPassword";
 
 function App() {
 
@@ -16,11 +18,12 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route path="/" element={<Layout><HomePage/></Layout>}/>
+          <Route path="/" element={<Layout><HomePage/></Layout>} errorElement={ErrorPage}/>
           <Route path="/product-page" element={<ProductPage/>}/>
           <Route path="/place-order" element={<Layout><PlaceOrderPage/></Layout>}/>
           <Route path="/login" element={<Login/>}/>
           <Route path="/signup" element={<SignUp/>}/>
+          <Route path="/forget-password" element={<ResetPassword/>}/>
           <Route path="/rating" element={<Layout><RatingsPage/></Layout>}/>
           <Route path="/order-details" element={<Layout><OrderDetails/></Layout>}/>
           <Route path="/about-us" element={<Layout><AboutUsPage/></Layout>}/>
